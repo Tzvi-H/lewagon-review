@@ -13,4 +13,14 @@ class RecipesView
     puts "#{question}?"
     gets.chomp
   end
+
+  def display_message(message)
+    puts message
+  end
+
+  def display_online_recipes(recipes)
+    recipes.each_with_index do |element, index|
+      puts "#{index + 1}. #{element}"
+    end
+  end
 end

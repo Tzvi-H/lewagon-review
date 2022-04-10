@@ -33,7 +33,7 @@ class Router
     when 1 then @controller.list
     when 2 then @controller.create
     when 3 then @controller.destroy
-    when 4 then puts "not implemented yet"
+    when 4 then @controller.import
     else
       puts "Please type 1, 2, 3 or 4 :)"
     end
