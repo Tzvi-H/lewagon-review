@@ -1,0 +1,3 @@
+id,username,password,is_manager
+1,songyi,1234,true
+2,tzvi,1234,false

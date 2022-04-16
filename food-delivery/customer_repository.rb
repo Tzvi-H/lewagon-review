@@ -29,6 +29,10 @@ class CustomerRepository
     @customers.find { |c| c.id == id.to_s }
   end
 
+  def find_by_index(index)
+    @customers[index]
+  end
+
   private
 
   def load_csv

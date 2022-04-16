@@ -29,7 +29,11 @@ class MealRepository
         @meals
     end
 
-    def find(id)
+    def find_by_index(index)
+      @meals[index]
+    end
+
+    def find_by_id(id)
         @meals.find {|meal| meal.id == id.to_s}
     end
     
