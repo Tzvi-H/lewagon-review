@@ -27,4 +27,20 @@ class OrdersController
   def list_undelivered_orders
     @orders_view.display_orders(@order_repository.undelivered_orders)
   end
+
+  def list_undelivered_my_orders(user_id)
+    @orders_view.display_orders(@order_repository.undelivered_my_orders(user_id))
+
+  end
+
+  def mark_as_delivered(user_id)
+    list_undelivered_my_orders(user_id)
+    index = @orders_view.ask("which order did you deliver").to_i - 1
+    order = @order_repository.find_undeliverd_my_order_by_index(user_id,index)
+    order.mark_as_delivered
+    @order_repository.save_csv
+    @orders_view.display_message("successfully delivered!") 
+    list_undelivered_my_orders(user_id)
+  end
+
 end

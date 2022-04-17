@@ -7,5 +7,10 @@ class Order
       @employee = employee
       @is_delivered = is_delivered
   end
+
+  def mark_as_delivered
+    @is_delivered = true
+  end
+  
 end
 

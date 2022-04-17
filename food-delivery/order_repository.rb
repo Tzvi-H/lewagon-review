@@ -32,6 +32,23 @@ class OrderRepository
     @orders.filter { |order| !order.is_delivered }
   end
 
+  def undelivered_my_orders(user_id)
+    @orders.filter { |order| order.employee.id == user_id and order.is_delivered == false}
+  end
+
+  def find_undeliverd_my_order_by_index(user_id,index)
+    undelivered_my_orders(user_id)[index]
+  end
+
+  def save_csv
+    CSV.open(@orders_csv_path, "wb") do |csv|
+      csv << ["id","delivered","meal_id","customer_id","employee_id"]
+      @orders.each do |order|
+        csv << [order.id, order.is_delivered, order.meal.id, order.customer.id, order.employee.id]
+      end
+    end
+  end
+
   private
 
   def load_csv
@@ -45,4 +62,5 @@ class OrderRepository
       @orders << Order.new(id, meal, customer, employee, is_delivered)
     end
   end
+  
 end

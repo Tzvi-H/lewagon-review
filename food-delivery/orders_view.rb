@@ -4,6 +4,10 @@ class OrdersView
     gets.chomp
   end
 
+  def display_message(message)
+    puts message
+  end
+
   def display_orders(orders)
     orders.each_with_index do |order, index|
       puts "#{index+1}. #{order.meal.name} - #{order.customer.address} - #{order.employee.username} - delivered [#{order
