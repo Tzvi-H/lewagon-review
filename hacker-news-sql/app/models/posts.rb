@@ -1,7 +1,7 @@
-require 'sqlite3'
+# require 'sqlite3'
 
-DB = SQLite3::Database.new("../db/posts.db")
-DB.results_as_hash = true
+# DB = SQLite3::Database.new("./db/posts.db")
+
 
 class Post
   attr_accessor :id, :title, :url, :votes
@@ -10,7 +10,7 @@ class Post
     @id = attributes[:id] || attributes["id"]
     @title = attributes[:title] || attributes["title"]
     @url = attributes[:url] || attributes["url"]
-    @votes = attributes[:votes] || attributes["votes"]
+    @votes = attributes[:votes] || attributes["votes"] || 0
   end
 
   def destroy
